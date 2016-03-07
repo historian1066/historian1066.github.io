@@ -12,7 +12,7 @@
     <link rel='shortcut icon' type='image/x-icon' href='https://cloud.githubusercontent.com/assets/3239719/12865756/93bf8b4e-ccb5-11e5-8fee-53f4c13f042d.png' />
     <style> 
     canvas {
-        border: 10px #333 solid;
+        border: 1px #333 solid;
     }
     </style>
   </head>
@@ -37,6 +37,8 @@ var mainContext = mainCanvas.getContext("2d");
 var canvasWidth = mainCanvas.width;
 var canvasHeight = mainCanvas.height;
  
+var xPos = -500;
+ 
 function drawCircle() {
   mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
  
@@ -46,9 +48,7 @@ function drawCircle() {
  
   // draw the circle
   mainContext.beginPath();
- 
-  var radius = 175;
-  mainContext.arc(225, 225, radius, 0, Math.PI * 2, false);
+  mainContext.arc(xPos, 225, 175, 0, Math.PI * 2, false);
   mainContext.closePath();
  
   mainContext.fillStyle = "#FFCC00";
@@ -57,6 +57,14 @@ function drawCircle() {
   mainContext.lineWidth = 10;
   mainContext.strokeStyle = "#DCB001";
   mainContext.stroke();
+ 
+  xPos += 5;
+ 
+  if (xPos > 1000) {
+    xPos = -500;
+  }
+ 
+  requestAnimationFrame(drawCircle);
 }
 drawCircle();
  
