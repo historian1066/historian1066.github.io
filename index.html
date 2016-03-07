@@ -31,6 +31,37 @@
 </div>
 <script>
  
+var mainCanvas = document.querySelector("#myCanvas");
+var mainContext = mainCanvas.getContext("2d");
+ 
+var canvasWidth = mainCanvas.width;
+var canvasHeight = mainCanvas.height;
+ 
+function drawCircle() {
+  mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+ 
+  // color in the background
+  mainContext.fillStyle = "#F8F8F8";
+  mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+ 
+  // draw the circle
+  mainContext.beginPath();
+ 
+  var radius = 175;
+  mainContext.arc(225, 225, radius, 0, Math.PI * 2, false);
+  mainContext.closePath();
+ 
+  mainContext.fillStyle = "#FFCC00";
+  mainContext.fill();
+ 
+  mainContext.lineWidth = 10;
+  mainContext.strokeStyle = "#DCB001";
+  mainContext.stroke();
+}
+drawCircle();
+ 
+ 
+ 
 </script>
 
       <footer class="site-footer">
