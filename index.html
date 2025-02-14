@@ -1,30 +1,39 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Coming soon</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6827694/7218752/css/fonts.css" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <style> 
-    canvas {
-        border: 0px #333 solid;
-        background-image:url(https://cloud.githubusercontent.com/assets/3239719/12865756/93bf8b4e-ccb5-11e5-8fee-53f4c13f042d.png);
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herringbone</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100%;
+            height: auto;
+            opacity: 0.15; /* Makes the logo appear light gray on black background */
+        }
     </style>
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Coming soon</h1>
-    </section>
-
-   
-
-    </section>
-
-  
-  </body>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="/api/placeholder/800/100" alt="Herringbone Logo" class="logo">
+    </div>
+</body>
 </html>
