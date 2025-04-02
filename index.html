@@ -7,6 +7,12 @@
     <link rel="icon" type="image/svg+xml" href="/logoblack.svg">
     <link rel="alternate icon" type="image/x-icon" href="/logoblack.ico">
     <style>
+        @font-face {
+            font-family: 'Signifier Web';
+            src: url('/signifier-web-regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
         body {
             margin: 0;
             padding: 0;
@@ -17,25 +23,48 @@
             align-items: center;
             overflow: hidden;
         }
-
-        .logo-container {
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             width: 80%;
             max-width: 800px;
+        }
+        .logo-container {
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 20px;
         }
-
         .logo {
             width: 100%;
             height: auto;
             opacity: 1.0; /* Makes the logo appear light gray on black background */
         }
+        .invitation-text {
+            font-family: 'Signifier Web', serif;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .app-store-badge {
+            width: 140px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
-    <div class="logo-container">
-        <img src="/Combination Mark White.png" alt="Herringbone Logo" class="logo">
+    <div class="content-container">
+        <div class="logo-container">
+            <img src="/Combination Mark White.png" alt="Herringbone Logo" class="logo">
+        </div>
+        <div class="invitation-text">By invitation only</div>
+        <a href="https://apps.apple.com/us/app/herringbone-com/id6742086147" target="_blank">
+            <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge">
+        </a>
     </div>
 </body>
 </html>
