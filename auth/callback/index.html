@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Herringbone Authentication</title>
+      <title>Redirecting to Herringbone</title>
       <style>
           body {
               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
@@ -24,9 +24,6 @@
           h1 {
               margin-bottom: 20px;
           }
-          p {
-              margin-bottom: 15px;
-          }
           .button {
               display: inline-block;
               background-color: #f5f5f5;
@@ -37,33 +34,62 @@
               font-weight: 500;
               margin-top: 20px;
           }
+          .message {
+              margin-top: 20px;
+              display: none;
+          }
       </style>
   </head>
   <body>
       <div class="container">
-          <h1>Herringbone Authentication</h1>
-          <p>Opening Herringbone app...</p>
-          <p><a href="#" id="openDirectly" class="button">Open App</a></p>
+          <h1>Opening Herringbone App</h1>
+          <p id="status">Redirecting to app...</p>
+          <div id="manual-open" class="message">
+              <p>If the app didn't open automatically, tap below:</p>
+              <a href="#" id="universal-link-btn" class="button">Open App (Universal Link)</a>
+              <p style="margin-top: 15px;">If that doesn't work, try:</p>
+              <a href="#" id="app-scheme-btn" class="button">Open App (Direct)</a>
+          </div>
       </div>
 
       <script>
-          // Get the URL parameters and hash
-          const queryString = window.location.search;
-          const hashFragment = window.location.hash;
+          // Get current URL components
+          const queryParams = window.location.search || '';
+          const hashFragment = window.location.hash || '';
 
-          // Create the app URL with the direct app scheme (most reliable)
-          const appUrl = 'herringbone://auth/callback' + queryString + hashFragment;
+          // Build the links
+          const universalLink = window.location.href; // Current URL with all parameters
+          const appScheme = 'herringbone://auth/callback' + queryParams + hashFragment;
 
-          // Set up the manual open button
-          document.getElementById('openDirectly').addEventListener('click', function(e) {
+          // Buttons setup
+          document.getElementById('universal-link-btn').addEventListener('click', function(e) 
+  {
               e.preventDefault();
-              window.location.href = appUrl;
+              attemptUniversalLink();
           });
 
-          // Try opening the app automatically
+          document.getElementById('app-scheme-btn').addEventListener('click', function(e) {
+              e.preventDefault();
+              window.location.href = appScheme;
+          });
+
+          // Function to try universal link
+          function attemptUniversalLink() {
+              // We use the same URL but need to reload to trigger universal link again
+              document.getElementById('status').textContent = 'Trying again...';
+              window.location.reload();
+          }
+
+          // Try to open using universal link first (the current URL should work)
           setTimeout(function() {
-              window.location.href = appUrl;
-          }, 300);
+              // If we're still here after 2 seconds, show manual options
+              document.getElementById('manual-open').style.display = 'block';
+              document.getElementById('status').textContent = 'App didn\'t open 
+  automatically';
+
+              // Now try the app scheme as backup
+              window.location.href = appScheme;
+          }, 2000);
       </script>
   </body>
   </html>
