@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Redirecting to Herringbone</title>
+      <style>
+          body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+  Arial, sans-serif;
+              padding: 20px;
+              text-align: center;
+              background-color: #131615;
+              color: #f5f5f5;
+              line-height: 1.6;
+          }
+          .container {
+              max-width: 500px;
+              margin: 50px auto;
+              padding: 20px;
+              border-radius: 8px;
+              background-color: #1c1f1e;
+          }
+          h1 {
+              margin-bottom: 20px;
+          }
+          .logo {
+              width: 180px;
+              margin-bottom: 30px;
+          }
+          .spinner {
+              border: 4px solid rgba(255, 255, 255, 0.1);
+              border-radius: 50%;
+              border-top: 4px solid #ffffff;
+              width: 40px;
+              height: 40px;
+              margin: 20px auto;
+              animation: spin 1s linear infinite;
+          }
+          @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+          }
+          .button {
+              display: inline-block;
+              background-color: #f5f5f5;
+              color: #131615;
+              padding: 12px 24px;
+              border-radius: 6px;
+              text-decoration: none;
+              font-weight: 500;
+              margin-top: 20px;
+          }
+          .message {
+              margin-top: 20px;
+              display: none;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="container">
+          <h1>Redirecting to Herringbone App</h1>
+          <div id="spinner" class="spinner"></div>
+          <p>Opening the Herringbone app...</p>
+          <div id="manual-message" class="message">
+              <p>If the app doesn't open automatically, click the button below:</p>
+              <a href="#" id="open-app" class="button">Open Herringbone App</a>
+          </div>
+      </div>
+
+      <script>
+          // Get the current URL and preserve all parameters
+          const currentUrl = window.location.href;
+
+          // Extract any auth hash parameters (access_token, etc.)
+          const hashParams = window.location.hash;
+
+          // The universal link URL to open the app
+          let appUrl = currentUrl;
+
+          // Show manual button after a delay
+          setTimeout(function() {
+              document.getElementById('manual-message').style.display = 'block';
+              document.getElementById('spinner').style.display = 'none';
+          }, 2500);
+
+          // Set up the manual open button
+          document.getElementById('open-app').addEventListener('click', function(e) {
+              e.preventDefault();
+              window.location.href = appUrl;
+          });
+
+          // Try to open the app immediately
+          window.location.href = appUrl;
+      </script>
+  </body>
+  </html>
