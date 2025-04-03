@@ -4,7 +4,7 @@
         "details": [
             {
                 "appID": "WK53293B94.com.herringbone.ios",
-                "paths": ["/i*"]
+                "paths": ["/i*", "/reset-password", "/auth/*"]
             }
         ]
     }
