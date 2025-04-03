@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Redirecting to Herringbone</title>
+      <title>Herringbone Authentication</title>
       <style>
           body {
               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
@@ -24,22 +24,8 @@
           h1 {
               margin-bottom: 20px;
           }
-          .logo {
-              width: 180px;
-              margin-bottom: 30px;
-          }
-          .spinner {
-              border: 4px solid rgba(255, 255, 255, 0.1);
-              border-radius: 50%;
-              border-top: 4px solid #ffffff;
-              width: 40px;
-              height: 40px;
-              margin: 20px auto;
-              animation: spin 1s linear infinite;
-          }
-          @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
+          p {
+              margin-bottom: 15px;
           }
           .button {
               display: inline-block;
@@ -51,58 +37,33 @@
               font-weight: 500;
               margin-top: 20px;
           }
-          .message {
-              margin-top: 20px;
-              display: none;
-          }
       </style>
   </head>
   <body>
       <div class="container">
-          <h1>Redirecting to Herringbone App</h1>
-          <div id="spinner" class="spinner"></div>
-          <p>Opening the Herringbone app...</p>
-          <div id="manual-message" class="message">
-              <p>If the app doesn't open automatically, click the button below:</p>
-              <a href="#" id="open-app" class="button">Open Herringbone App</a>
-              <p style="margin-top: 15px; font-size: 14px;">Or try the app scheme
-  directly:</p>
-              <a href="#" id="open-scheme" class="button">Try Direct Open</a>
-          </div>
+          <h1>Herringbone Authentication</h1>
+          <p>Opening Herringbone app...</p>
+          <p><a href="#" id="openDirectly" class="button">Open App</a></p>
       </div>
 
       <script>
-          // Get current URL and params
-          const currentUrl = window.location.href;
-          const queryParams = window.location.search || '';
-          const hashParams = window.location.hash || '';
+          // Get the URL parameters and hash
+          const queryString = window.location.search;
+          const hashFragment = window.location.hash;
 
-          // Build both version of the URL for the app
-          const universalLink = "https://herringbone.app/auth/callback" + queryParams +
-  hashParams;
-          const appScheme = "herringbone://auth/callback" + queryParams + hashParams;
+          // Create the app URL with the direct app scheme (most reliable)
+          const appUrl = 'herringbone://auth/callback' + queryString + hashFragment;
 
-          // Try to open app with universal link after a short delay
-          setTimeout(function() {
-              window.location.href = universalLink;
-          }, 100);
-
-          // Show manual options after a delay
-          setTimeout(function() {
-              document.getElementById('manual-message').style.display = 'block';
-              document.getElementById('spinner').style.display = 'none';
-          }, 2500);
-
-          // Set up the manual buttons
-          document.getElementById('open-app').addEventListener('click', function(e) {
+          // Set up the manual open button
+          document.getElementById('openDirectly').addEventListener('click', function(e) {
               e.preventDefault();
-              window.location.href = universalLink;
+              window.location.href = appUrl;
           });
 
-          document.getElementById('open-scheme').addEventListener('click', function(e) {
-              e.preventDefault();
-              window.location.href = appScheme;
-          });
+          // Try opening the app automatically
+          setTimeout(function() {
+              window.location.href = appUrl;
+          }, 300);
       </script>
   </body>
   </html>
