@@ -55,7 +55,9 @@
             margin-bottom: 40px;
         }
         
-        .waitlist-btn {
+        #showFormBtn{display:none;}
+
+.waitlist-btn {
             background-color: transparent;
             color: white;
             border: 2px solid white;
@@ -76,7 +78,7 @@
         }
         
         .waitlist-form {
-            display: none;
+            display: block;
             background-color: #111;
             border: 1px solid #333;
             max-width: 500px;
@@ -221,9 +223,16 @@
                 </div>
                 
                 <div class="field">
-                    <label for="state">State</label>
-                    <select id="state" name="state" required>
-                        <option value="">Select your state</option>
+                    <label for="business">Business Name</label>
+                    <input type="text" id="business" name="business" required>
+                </div>
+                
+                                <div class="field">
+                    <label for="usecase">How would you like to use Herringbone?</label>
+                    <textarea id="usecase" name="usecase" placeholder="Describe your decision-making use case..." required></textarea>
+                </div>
+                
+                <!--
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -275,20 +284,10 @@
                         <option value="WV">West Virginia</option>
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
-                    </select>
+                    </select> -->
                 </div>
                 
-                <div class="field">
-                    <label for="reason">Why are you interested in Herringbone?</label>
-                    <textarea id="reason" name="reason" required></textarea>
-                </div>
-                
-                <div class="field">
-                    <label for="phone">Phone Number (optional)</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                
-                <div id="errorMessage">There was a problem submitting your application. Please try again.</div>
+                                <div id="errorMessage">There was a problem submitting your application. Please try again.</div>
                 
                 <button type="submit" class="submit-btn" id="submitBtn">SUBMIT APPLICATION</button>
                 <div class="loader" id="formLoader"></div>
@@ -311,6 +310,9 @@
             const errorMessage = document.getElementById('errorMessage');
             const submitBtn = document.getElementById('submitBtn');
             const formLoader = document.getElementById('formLoader');
+            // Show form by default
+            formContainer.style.display = 'block';
+            showFormBtn.style.display = 'none';
             
             // Show form when button is clicked
             showFormBtn.addEventListener('click', function() {
@@ -345,9 +347,8 @@
                 const data = {
                     name: formData.get('name'),
                     email: formData.get('email'),
-                    state: formData.get('state'),
-                    reason: formData.get('reason'),
-                    phone: formData.get('phone') || 'Not provided'
+                    business: formData.get('business'),
+                    usecase: formData.get('usecase')
                 };
                 
                 // Send to FormSubmit.co
