@@ -56,14 +56,26 @@ h1, h2, h3, h4{
     margin:0 0 20px 0;
 }
 
+h1 {
+    font-size: 3.5rem;
+}
+
 h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
+h3 {
+    font-size: 2rem;
+}
+
 .hero{
     text-align:center;
-    padding-top:60px;
+    padding-top:30px;
+    max-width:1100px;
+    margin:0 auto;
+    padding-left:20px;
+    padding-right:20px;
 }
 
 .hero .badge{
@@ -125,7 +137,8 @@ h2 {
     width:220px;
     height:auto;
     display:block;
-    margin:40px auto;
+    margin:20px 0 30px 0;
+    text-align:left;
 }
 
 /* Built For Section */
@@ -133,13 +146,14 @@ h2 {
     background: var(--gray-bg);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+    padding-top:40px;
 }
 
 .built-for-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .use-case-card {
@@ -384,10 +398,10 @@ footer{
     <!-- Hero -->
     <header class="hero">
         <img src="/Combination Mark White.png" alt="Herringbone Logo" class="site-logo">
-        <div class="badge">TEXT-TO-DECISION</div>
-        <h1>The Decision API That Outperforms General Models</h1>
+        <h1>Turn text into decisions.</h1>
+        <p>The Decision API That Outperforms General Models</p>
         <p>Powered by an ensemble of LLMs specifically optimized for decision-making</p>
-        <button class="cta-btn showFormBtn">Join the Waitlist</button>
+        <button class="cta-btn showFormBtn">Join the Waitlist</button><br><br>
     </header>
 
     <!-- Built For Section -->
@@ -398,28 +412,20 @@ footer{
         </p>
         <div class="built-for-grid">
             <div class="use-case-card">
-                <h3>BI Dashboards</h3>
-                <p>Turn metrics into decisions, not just charts. Surface what actions to take from your data.</p>
+                <h3>LLM Aggregators</h3>
+                <p>Combine multiple foundation models and surface the best decision instantly.</p>
             </div>
             <div class="use-case-card">
-                <h3>Project Management</h3>
-                <p>Auto-detect blockers and recommend next steps. Never miss critical decisions in updates.</p>
+                <h3>AI-Native Products</h3>
+                <p>Ship decision features without prompt engineering or in-house ML teams.</p>
             </div>
             <div class="use-case-card">
-                <h3>Enterprise Workflows</h3>
-                <p>Process thousands of documents and emails to surface decisions before they're missed.</p>
+                <h3>Enterprise</h3>
+                <p>Standardize high-stakes decisions across teams with audit-ready outputs.</p>
             </div>
             <div class="use-case-card">
-                <h3>AI Assistants</h3>
-                <p>Help users make better choices faster with structured recommendations, not essays.</p>
-            </div>
-            <div class="use-case-card">
-                <h3>HR Platforms</h3>
-                <p>Standardize hiring decisions and org changes with consistent, defendable frameworks.</p>
-            </div>
-            <div class="use-case-card">
-                <h3>Communication Tools</h3>
-                <p>Highlight decisions in Slack/Teams. Turn discussions into clear action items.</p>
+                <h3>Decision Makers</h3>
+                <p>From operators to executives—turn unstructured text into clear, confident calls.</p>
             </div>
         </div>
     </section>
@@ -611,7 +617,6 @@ result = api.analyze.quick(
     <!-- Final CTA -->
     <section class="final-cta">
         <h2>Ready to Ship Better Decisions?</h2>
-        <p>Join leading AI products using Herringbone to power their decision features.</p>
         <button class="cta-btn showFormBtn">Join the Waitlist</button>
     </section>
 
